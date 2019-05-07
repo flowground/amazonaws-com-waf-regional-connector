@@ -1,0 +1,132 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
+                "RuleId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
+                "Updates": [
+                    {
+                        "Action": "DELETE",
+                        "Predicate": {
+                            "DataId": "MyByteMatchSetID",
+                            "Negated": false,
+                            "Type": "ByteMatch"
+                        }
+                    }
+                ]
+            },
+            "properties": {
+                "ChangeToken": {
+                    "description": "The value returned by the most recent call to <a>GetChangeToken</a>.",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "RuleId": {
+                    "description": "The <code>RuleId</code> of the <code>Rule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRule</code> and by <a>ListRules</a>.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Updates": {
+                    "description": "<p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>Rule</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>RuleUpdate</a>: Contains <code>Action</code> and <code>Predicate</code> </p> </li> <li> <p> <a>Predicate</a>: Contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>",
+                    "items": {
+                        "description": "Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.",
+                        "properties": {
+                            "Action": {
+                                "description": "Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.",
+                                "enum": [
+                                    "INSERT",
+                                    "DELETE"
+                                ],
+                                "type": "string"
+                            },
+                            "Predicate": {
+                                "description": "The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.",
+                                "properties": {
+                                    "DataId": {
+                                        "description": "A unique identifier for a predicate in a <code>Rule</code>, such as <code>ByteMatchSetId</code> or <code>IPSetId</code>. The ID is returned by the corresponding <code>Create</code> or <code>List</code> command.",
+                                        "maxLength": 128,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    },
+                                    "Negated": {
+                                        "description": "<p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>",
+                                        "type": "boolean"
+                                    },
+                                    "Type": {
+                                        "description": "The type of predicate in a <code>Rule</code>, such as <code>ByteMatch</code> or <code>IPSet</code>.",
+                                        "enum": [
+                                            "IPMatch",
+                                            "ByteMatch",
+                                            "SqlInjectionMatch",
+                                            "GeoMatch",
+                                            "SizeConstraint",
+                                            "XssMatch",
+                                            "RegexMatch"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Negated",
+                                    "Type",
+                                    "DataId"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "Action",
+                            "Predicate"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "RuleId",
+                "ChangeToken",
+                "Updates"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

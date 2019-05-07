@@ -1,0 +1,120 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
+                "IPSetId": "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
+                "Updates": [
+                    {
+                        "Action": "DELETE",
+                        "IPSetDescriptor": {
+                            "Type": "IPV4",
+                            "Value": "192.0.2.44/32"
+                        }
+                    }
+                ]
+            },
+            "properties": {
+                "ChangeToken": {
+                    "description": "The value returned by the most recent call to <a>GetChangeToken</a>.",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "IPSetId": {
+                    "description": "The <code>IPSetId</code> of the <a>IPSet</a> that you want to update. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Updates": {
+                    "description": "<p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul> <p>You can insert a maximum of 1000 addresses in a single request.</p>",
+                    "items": {
+                        "description": "Specifies the type of update to perform to an <a>IPSet</a> with <a>UpdateIPSet</a>.",
+                        "properties": {
+                            "Action": {
+                                "description": "Specifies whether to insert or delete an IP address with <a>UpdateIPSet</a>.",
+                                "enum": [
+                                    "INSERT",
+                                    "DELETE"
+                                ],
+                                "type": "string"
+                            },
+                            "IPSetDescriptor": {
+                                "description": "The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from.",
+                                "properties": {
+                                    "Type": {
+                                        "description": "Specify <code>IPV4</code> or <code>IPV6</code>.",
+                                        "enum": [
+                                            "IPV4",
+                                            "IPV6"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "<p>Specify an IPv4 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> </ul> <p>For more information about CIDR notation, see the Wikipedia entry <a href=\"https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing\">Classless Inter-Domain Routing</a>.</p> <p>Specify an IPv6 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul>",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Type",
+                                    "Value"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "Action",
+                            "IPSetDescriptor"
+                        ],
+                        "type": "object"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "IPSetId",
+                "ChangeToken",
+                "Updates"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

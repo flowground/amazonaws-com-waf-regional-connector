@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "MaxItems": 100,
+                "RuleId": "WAFRule-1-Example",
+                "TimeWindow": {
+                    "EndTime": "2016-09-27T15:50Z",
+                    "StartTime": "2016-09-27T15:50Z"
+                },
+                "WebAclId": "createwebacl-1472061481310"
+            },
+            "properties": {
+                "MaxItems": {
+                    "description": "The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of <code>MaxItems</code>, <code>GetSampledRequests</code> returns information about all of them. ",
+                    "maximum": 500,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "RuleId": {
+                    "description": "<p> <code>RuleId</code> is one of three values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> or the <code>RuleGroupId</code> of the <code>RuleGroup</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "TimeWindow": {
+                    "description": "The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following format: <code>\"2016-09-27T14:50Z\"</code>. You can specify any time range in the previous three hours.",
+                    "properties": {
+                        "EndTime": {
+                            "description": "The end of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>\"2016-09-27T14:50Z\"</code>. You can specify any time range in the previous three hours.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "StartTime": {
+                            "description": "The beginning of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>\"2016-09-27T14:50Z\"</code>. You can specify any time range in the previous three hours.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "StartTime",
+                        "EndTime"
+                    ],
+                    "type": "object"
+                },
+                "WebAclId": {
+                    "description": "The <code>WebACLId</code> of the <code>WebACL</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "WebAclId",
+                "RuleId",
+                "TimeWindow",
+                "MaxItems"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "ChangeToken": "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
+                "DefaultAction": {
+                    "Type": "ALLOW"
+                },
+                "MetricName": "CreateExample",
+                "Name": "CreateExample"
+            },
+            "properties": {
+                "ChangeToken": {
+                    "description": "The value returned by the most recent call to <a>GetChangeToken</a>.",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "DefaultAction": {
+                    "description": "The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the <code>Rule</code> objects that are associated with the <code>WebACL</code>.",
+                    "properties": {
+                        "Type": {
+                            "description": "<p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>",
+                            "enum": [
+                                "BLOCK",
+                                "ALLOW",
+                                "COUNT"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type"
+                    ],
+                    "type": "object"
+                },
+                "MetricName": {
+                    "description": "A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain white space. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "A friendly name or description of the <a>WebACL</a>. You can't change <code>Name</code> after you create the <code>WebACL</code>.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Name",
+                "MetricName",
+                "DefaultAction",
+                "ChangeToken"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
