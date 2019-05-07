@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) AWS WAF Regional MSP Connector
+# ![LOGO](logo.png) AWS WAF Regional **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the AWS WAF Regional API (version 2016-11-28).
+A generated **flow**ground connector for the AWS WAF Regional API (version 2016-11-28).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/waf-regional/2016-11-28/swagger.json<br/>
-Generated at: 2019-05-07T11:16:49+03:00
+Generated at: 2019-05-07T17:36:29+03:00
 
 ## API Description
 
@@ -1020,7 +1020,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-waf-regional-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-waf-regional-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
